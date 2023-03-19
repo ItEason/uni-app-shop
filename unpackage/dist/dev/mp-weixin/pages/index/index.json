@@ -1,6 +1,3 @@
 {
-  "navigationBarTitleText": "uni-app",
-  "usingComponents": {
-    "uni-link": "/uni_modules/uni-link/components/uni-link/uni-link"
-  }
+  "navigationBarTitleText": "uni-app"
 }
