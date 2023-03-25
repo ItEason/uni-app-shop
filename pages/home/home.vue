@@ -1,5 +1,8 @@
 <template>
   <view>
+    <view class="search-box">
+      <my-search @click="toSearch()"></my-search>
+    </view>
     <!-- 轮播图 -->
     <swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" :circular="true">
       <swiper-item v-for="(item, i) in swiperList" :key="i">
@@ -27,9 +30,10 @@
           </navigator>
           <!-- 右侧4个小图片盒子 -->
           <view class="right-img-box">
-            <navigator :url="item2.url" class="right-img-item" v-for="(item2, i2) in item.product_list" :key="i2" v-if="i2 !== 0">
+            <navigator :url="item2.url" class="right-img-item" v-for="(item2, i2) in item.product_list" :key="i2"
+              v-if="i2 !== 0">
               <img :src="item2.image_src" :style="{width: item2.image_width + 'rpx'}" alt="blank" mode="widthFix">
-            </navigator >
+            </navigator>
           </view>
         </view>
       </view>
@@ -74,7 +78,7 @@
           data: res
         } = await uni.$http.get('/api/public/v1/home/floordata')
         if (res.meta.status !== 200) return uni.$showMessage();
-        
+
         // 对数据进行处理
         res.message.forEach(floor => {
           floor.product_list.forEach(prod => {
@@ -82,12 +86,24 @@
           })
         })
         this.floorList = res.message;
+      },
+      toSearch() {
+        uni.navigateTo({
+          url: '/subpkg/search/search'
+        })
       }
     }
   }
 </script>
 
 <style lang="scss">
+  .search-box {
+    position: sticky;
+    top: 0;
+    // 提高层级，防止被轮播图覆盖
+    z-index: 999;
+  }
+
   swiper {
     height: 300rpx;
 

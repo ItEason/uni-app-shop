@@ -3,5 +3,39 @@
     "projectname": "uni-shop-2",
     "setting": {
         "compileHotReLoad": true
+    },
+    "condition": {
+        "miniprogram": {
+            "list": [
+                {
+                    "name": "",
+                    "pathName": "pages/cate/cate",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "subpkg/search/search",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "subpkg/goods_list/goods_list",
+                    "query": "query=热",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "subpkg/goods_detail/goods_detail",
+                    "query": "goods_id=395",
+                    "launchMode": "default",
+                    "scene": null
+                }
+            ]
+        }
     }
 }
