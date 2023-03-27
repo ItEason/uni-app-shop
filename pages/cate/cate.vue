@@ -36,7 +36,9 @@
 </template>
 
 <script>
+  import badgeMix from '@/mixins/tabbar-badge.js'
   export default {
+    mixins: [badgeMix],
     onLoad() {
       // 获取设备屏幕可用区域
       const screen = uni.getSystemInfoSync();
@@ -75,13 +77,13 @@
         this.active = i;
         // 重新为二级分类赋值
         this.cateLevel2 = this.cateList[i].children;
-        
+
         this.scrollTop = this.scrollTop === 0 ? 1 : 0;
       },
       // 动态前往goods_list页面
       linkTo(cid) {
         uni.navigateTo({
-          url:'/subpkg/goods_list/goods_list?cid=' + cid
+          url: '/subpkg/goods_list/goods_list?cid=' + cid
         })
       },
       toSearch() {
@@ -131,11 +133,11 @@
       text-align: center;
       padding: 15px 0;
     }
-    
+
     .cate-lv3-list {
       display: flex;
       flex-wrap: wrap;
-      
+
       .cate-lv3-item {
         display: flex;
         width: 33.33%;
@@ -143,12 +145,12 @@
         justify-content: center;
         align-items: center;
         margin: 0 0 10px 0;
-        
+
         img {
           width: 60px;
           height: 60px;
         }
-        
+
         text {
           font-size: 12px;
         }

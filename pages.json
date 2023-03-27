@@ -74,7 +74,7 @@
         "pagePath": "pages/cart/cart",
         "text": "购物车",
         "iconPath": "static/tab_icons/cart.png",
-        "selectedIconPath": "static/tab_icons/cate-active.png"
+        "selectedIconPath": "static/tab_icons/cart-active.png"
       },
       {
         "pagePath": "pages/my/my",
