@@ -63,17 +63,32 @@ export default {
 
       // 数据重新持久化存储
       this.commit('m_cart/saveToStorage');
-    }
+    },
+
+    // 更新全选按钮的状态
+    updateAllGoodsState(state, newState) {
+      state.cart.forEach(item => item.goods_state = newState);
+      // 数据重新持久化存储
+      this.commit('m_cart/saveToStorage');
+    },
   },
 
   // 模块的 getters 属性
   getters: {
     // 统计购物车中商品的总数量
     total(state) {
-      let c = 0
-      // 循环统计商品的数量，累加到变量 c 中
-      state.cart.forEach(goods => c += goods.goods_count)
-      return c
+      return state.cart.reduce((total, item) => total = total + item.goods_count, 0)
+    },
+    // 勾选的商品的总数量
+    checkedCount(state) {
+      return state.cart.filter(item => item.goods_state).reduce((total, item) => total = total + item.goods_count, 0)
+    },
+
+    // 已勾选商品的总价格
+    checkGoodsAmount(state) {
+      return state.cart.filter(item => item.goods_state).reduce((total, item) => total += item.goods_count * item
+        .goods_price,
+        0).toFixed(2);
     }
-  }
+  },
 }

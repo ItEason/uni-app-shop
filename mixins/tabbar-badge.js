@@ -10,6 +10,11 @@
         })
       }
     },
+    watch: {
+      total() {
+        this.setBadge();
+      }
+    },
     computed: {
       ...mapGetters('m_cart', ['total'])
     },

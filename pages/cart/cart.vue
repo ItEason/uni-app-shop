@@ -1,5 +1,5 @@
 <template>
-  <view>
+  <view class="cart-container" v-if="cart.length !== 0">
     <!-- 收货地址组件 -->
     <my-address></my-address>
 
@@ -20,6 +20,15 @@
         </uni-swipe-action-item>
       </block>
     </uni-swipe-action>
+
+    <!-- 结算组件 -->
+    <my-settle></my-settle>
+  </view>
+
+  <!-- 空白购物车区域 -->
+  <view class="empty-cart" v-else>
+    <img src="/static/cart_empty@2x.png" class="empty-img">
+    <text class="tip-title">空空如也</text>
   </view>
 </template>
 
@@ -64,16 +73,39 @@
 </script>
 
 <style lang="scss">
-  .cart-title {
-    height: 40px;
-    display: flex;
-    align-items: center;
-    padding: 0 0 0 5px;
-    border-bottom: 1px solid #efefef;
+  .cart-container {
+    padding: 0 0 50px 0;
 
-    .cart-title-text {
-      font-size: 14px;
-      margin-left: 10px;
+    .cart-title {
+      height: 40px;
+      display: flex;
+      align-items: center;
+      padding: 0 0 0 5px;
+      border-bottom: 1px solid #efefef;
+
+      .cart-title-text {
+        font-size: 14px;
+        margin-left: 10px;
+      }
     }
+  }
+
+  .empty-cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 150px 0 0 0;
+    .empty-img {
+      width: 90px;
+      height: 90px;
+      
+    }
+
+    .tip-title {
+      font-size: 12px;
+      color: gray;
+      margin: 15px 0 0 0;
+    }
+    
   }
 </style>
